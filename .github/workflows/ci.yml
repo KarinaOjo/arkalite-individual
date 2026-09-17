@@ -33,6 +33,6 @@ jobs:
       - name: Construir y publicar ${{ matrix.servicio }}
         working-directory: ${{ matrix.servicio }}
         run: |
-          IMG=ghcr.io/{{ github.repository }}/${{ matrix.servicio }}: ${{ github.sha }}
+          IMG="ghcr.io/${{ github.repository }}/${{ matrix.servicio }}:${{ github.sha }}"
           docker build -t "$IMG" .
           docker push "$IMG"
