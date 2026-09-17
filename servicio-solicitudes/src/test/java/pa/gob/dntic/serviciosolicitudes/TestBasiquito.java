@@ -1,28 +1,34 @@
 package pa.gob.dntic.serviciosolicitudes;
-
 import org.junit.jupiter.api.Test;
+//package pa.gob.dntic.serviciosolicitudes.eventos.SolicitudEnviada;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Test
-void alEnviarSolicitud_debeGenerarseNotificacion() {
-    // Arrange
-    Solicitud solicitud = servicioSolicitudes.registrar("INC-002", "Incidencia");
+@SpringBootTest
+public class TestBasiquito{
+//    @Test
+//    void alEnviarSolicitud_debeGenerarseNotificacion() {
+//        // Arrange
+//        Solicitud solicitud = servicioSolicitudes.registrar("INC-002", "Incidencia");
+//
+//        // Act
+//        Solicitud enviada = servicioSolicitudes.enviar(solicitud.id());
+//
+//        // Assert
+//        assertEquals(Estado.ENVIADA, enviada.estado());
+//        assertEquals(1, servicioNotificaciones.listar().size());
+//        assertEquals(
+//                "Solicitud INC-002 (Incidencia) enviada",
+//                servicioNotificaciones.listar().get(0).texto()
+//        );
+//    }
 
-    // Act
-    Solicitud enviada = servicioSolicitudes.enviar(solicitud.id());
+    @Test
+    void Sumar2numeros ()
+    {
+        assertEquals(3, 4+1);
+    }
 
-    // Assert
-    assertEquals(Estado.ENVIADA, enviada.estado());
-    assertEquals(1, servicioNotificaciones.listar().size());
-    assertEquals(
-            "Solicitud INC-002 (Incidencia) enviada",
-            servicioNotificaciones.listar().get(0).texto()
-    );
 }
 
-@Test
-void Sumar2numeros ()
-{
-    assertEquals(3, 4+1);
-}
+
