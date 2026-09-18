@@ -1,5 +1,6 @@
 package pa.gob.dntic.serviciosolicitudes.solicitudes.dominio;
 
+import pa.gob.dntic.serviciosolicitudes.eventos.SolicitudAprobada;
 import pa.gob.dntic.serviciosolicitudes.eventos.SolicitudEnviada;
 
 import java.util.List;
@@ -25,6 +26,13 @@ public class ServicioDeSolicitudes {
         repositorio.guardar(enviada);
         publicador.publicar(new SolicitudEnviada(enviada.id(), enviada.tipo()));  // avisa; no sabe quién reacciona
         return enviada;
+    }
+
+    public Solicitud aprobar(String id) {
+        Solicitud aprobada = buscar(id).aprobar();
+        repositorio.guardar(aprobada);
+        publicador.publicar(new SolicitudAprobada(aprobada.id(), aprobada.tipo()));
+        return aprobada;
     }
 
     public List<Solicitud> listar() { return repositorio.todas(); }

@@ -40,4 +40,9 @@ public class SolicitudController {
     public Solicitud enviar(@PathVariable String id) {
         return servicio.enviar(id);
     }
+
+    @PostMapping("/solicitudes/{id}/aprobar")
+    public Solicitud aprobar(@PathVariable String id) {
+        return servicio.aprobar(id);
+    }
 }

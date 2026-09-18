@@ -1,16 +1,15 @@
 services:
-  servicio-notificador:
+  servicio-notificaciones:
     build: ./servicio-notificaciones
     ports:
       - "8081:8080"
 
-  servicio-solicitud:
+  servicio-solicitudes:
     build: ./servicio-solicitudes
     ports:
       - "8080:8080"
     environment:
-      #NOTIFICATION_URL: http://servicio-notificador:8080/notificaciones
-      NOTIFICACIONES_URL: http://servicio-notificador:8080/solicitud-enviada
+      NOTIFICACIONES_URL: http://servicio-notificaciones:8080/solicitud-enviada
+      NOTIFICACIONES_APROBADA_URL: http://servicio-notificaciones:8080/solicitud-aprobada
     depends_on:
-      - servicio-notificador
-
+      - servicio-notificaciones

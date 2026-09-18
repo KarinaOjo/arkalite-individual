@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pa.gob.dntic.servicionotificaciones.dominio.Notificacion;
 import pa.gob.dntic.servicionotificaciones.dominio.ServicioDeNotificaciones;
+import pa.gob.dntic.servicionotificaciones.eventos.SolicitudAprobada;
 import pa.gob.dntic.servicionotificaciones.eventos.SolicitudEnviada;
 
 import java.util.List;
 
-/* Para VER que el evento llegó: GET /notificaciones */
+
 @RestController
 public class NotificacionController {
     private final ServicioDeNotificaciones servicio;
@@ -28,6 +29,11 @@ public class NotificacionController {
 
     @PostMapping("/solicitud-enviada")
     public void recibirSolicitudEnviada(@RequestBody SolicitudEnviada evento) {
+        manejadorDeEventos.manejar(evento);
+    }
+
+    @PostMapping("/solicitud-aprobada")
+    public void recibirSolicitudAprobada(@RequestBody SolicitudAprobada evento) {
         manejadorDeEventos.manejar(evento);
     }
 }

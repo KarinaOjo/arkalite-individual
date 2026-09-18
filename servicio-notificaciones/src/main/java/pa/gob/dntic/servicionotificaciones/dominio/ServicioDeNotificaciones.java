@@ -1,5 +1,6 @@
 package pa.gob.dntic.servicionotificaciones.dominio;
 
+import pa.gob.dntic.servicionotificaciones.eventos.SolicitudAprobada;
 import pa.gob.dntic.servicionotificaciones.eventos.SolicitudEnviada;
 import java.util.List;
 
@@ -14,6 +15,10 @@ public class ServicioDeNotificaciones {
     public void alRecibirSolicitudEnviada(SolicitudEnviada e) {
         repositorio.guardar(new Notificacion("Solicitud " + e.id() + " (" + e.tipo() + ") enviada"));
         System.out.println(new Notificacion("Solicitud " + e.id() + " (" + e.tipo() + ") enviada"));
+    }
+
+    public void alRecibirSolicitudAprobada(SolicitudAprobada e) {
+        repositorio.guardar(new Notificacion("Solicitud " + e.id() + " (" + e.tipo() + ") aprobada"));
     }
 
     public List<Notificacion> listar() {
